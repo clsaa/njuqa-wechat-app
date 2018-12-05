@@ -23,6 +23,7 @@ Page({
         "Content-Type":"application/json"
       },
       success: function (res) {
+        console.log("yanyan")
         console.log(res.data)
       },
       fail: function (err) {
