@@ -12,13 +12,12 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.1",
-	"appid": "wx3a389d4403d72f0f",
-	"projectname": "njuqa-wechat-app",
+	"libVersion": "2.4.2",
+	"appid": "touristappid",
+	"projectname": "weapp-wechat-zhihu",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
-	"isGameTourist": false,
 	"condition": {
 		"search": {
 			"current": -1,

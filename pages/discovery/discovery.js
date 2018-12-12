@@ -1,13 +1,17 @@
-//index.js
-
+//discovery.js
 var util = require('../../utils/util.js')
-var app = getApp()
 Page({
   data: {
     feed: [],
     feed_length: 0
   },
-  //事件处理函数
+  onLoad: function () {
+    console.log('onLoad')
+    var that = this
+    //调用应用实例的方法获取全局数据
+    this.refresh();
+  },
+
   bindItemTap: function() {
     wx.navigateTo({
       url: '../answer/answer'
@@ -17,12 +21,6 @@ Page({
     wx.navigateTo({
       url: '../question/question'
     })
-  },
-  onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    this.getData();
   },
   upper: function () {
     wx.showNavigationBarLoading()
@@ -36,8 +34,11 @@ Page({
     setTimeout(function(){wx.hideNavigationBarLoading();that.nextLoad();}, 1000);
     console.log("lower")
   },
- 
-  //网络请求数据, 实现首页刷新
+  //scroll: function (e) {
+  //  console.log("scroll")
+  //},
+
+  //网络请求数据, 实现刷新
   refresh: function(){
     var index_api = '';
     util.getData(index_api)
@@ -47,17 +48,6 @@ Page({
           //});
           console.log(data);
         });
-  },
-
-  //使用数据实现刷新效果
-  getData: function(){
-    var feed = '暂时无数据';
-    console.log("loaddata");
-    //var feed_data = feed.data;
-    this.setData({
-      feed:feed,
-      feed_length: feed.length
-    });
   }
-
-})
+ 
+});
