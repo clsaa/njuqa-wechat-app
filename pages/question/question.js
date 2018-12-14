@@ -13,6 +13,11 @@ Page({
       url: '../answer/answer'
     })
   },
+  bindAnswerItemTap: function () {
+    wx.navigateTo({
+      url: '../answer/answer'
+    })
+  },
   onLoad: function () {
     console.log('onLoad')
     var that = this

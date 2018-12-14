@@ -36,7 +36,7 @@
                 <image src="../../images/invite.png"></image>
                 <text>邀请回答</text>
             </view>
-            <view class="write flex-item">
+            <view class="write flex-item" bindtap="bindAnswerItemTap">
                 <image src="../../images/write.png"></image>
                 <text>写回答</text>
             </view>
