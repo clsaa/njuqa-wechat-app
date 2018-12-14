@@ -24,12 +24,13 @@
             <view class="feed-content">
                 <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
                     <a class="question-link">
-                        <text>{{item.question}}</text>
+                        <text>{{userInfo.nickName}}{{item.content}}
+                        </text>
                     </a>
                 </view>
                 <view class="answer-body">
                     <view bindtap="bindItemTap">
-                        <text class="answer-txt" aid="{{answer_id}}">{{item.answer_ctnt}}</text>
+                        <text class="answer-txt" aid="{{answer_id}}">{{item.answer_ctnt}}{{openId}}{{nickName}}</text>
                     </view>
                     <view class="answer-actions" bindtap="bindItemTap">
                         <view class="like dot">
@@ -46,5 +47,7 @@
             </view>
         </view>
     </block>
+    <button bindtap="RequestData" value ="button">request</button>
+    <button bindtap="PostData" value = "buttonPost">post</button>
 </scroll-view>
 

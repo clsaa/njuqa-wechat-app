@@ -5,7 +5,8 @@
     "pages/notify/notify",
     "pages/more/more",
     "pages/answer/answer",
-    "pages/question/question"
+    "pages/question/question",
+    "pages/quiz/quiz"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -21,22 +22,22 @@
     "borderStyle": "white",
     "list": [{
       "pagePath": "pages/index/index",
-      "text": "",
+      "text": "浏览",
       "iconPath": "images/index.png",
       "selectedIconPath": "images/index_focus.png"
     }, {
-      "pagePath": "pages/discovery/discovery",
-      "text": "",
-      "iconPath": "images/discovery.png",
-      "selectedIconPath": "images/discovery_focus.png"
+      "pagePath":"pages/quiz/quiz",
+      "text":"提问",
+      "iconPath":"images/icon-quiz.png",
+      "selectedIconPath":"images/icon-quiz-act.png"
     }, {
       "pagePath": "pages/notify/notify",
-      "text": "",
+      "text": "回答",
       "iconPath": "images/ring.png",
       "selectedIconPath": "images/ring_focus.png"
     }, {
       "pagePath": "pages/more/more",
-      "text": "",
+      "text": "我的",
       "iconPath": "images/burger.png",
       "selectedIconPath": "images/burger_focus.png"
     }]
