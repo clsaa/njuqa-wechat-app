@@ -110,11 +110,12 @@ Page({
     var that = this;
     console.log(app.globalData.openId);
     console.log("dsfadfas")
-    var url1 = "https://njuqa.clsaa.com/v1/user/"
+    var usrl1 = "https://njuqa.clsaa.com/v1/user/"
     var userId = "d12079a2f9464fea96f414612c5ac9ab"
-    var url2 = "/answer/question/all/"
+    var usr2 = "/answer/question/all/"
     wx.request({
-      url: url1+userId+url2,
+      //url: "https://njuqa.clsaa.com/v1/user/1/answer/question/all/",
+      url:"https://njuqa.clsaa.com/v1/question/d12079a2f9464fea96f414612c5ac9ab/",
       //data: {},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: {}, // 设置请求的 header 默认是application/json
