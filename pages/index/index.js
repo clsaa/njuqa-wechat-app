@@ -51,7 +51,7 @@ Page({
 
   //使用数据实现刷新效果
   getData: function(){
-    var feed = '暂时无数据';
+    var feed = [1,2,3];
     console.log("loaddata");
     //var feed_data = feed.data;
     this.setData({
