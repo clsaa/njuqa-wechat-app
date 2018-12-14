@@ -48,5 +48,6 @@
         </view>
     </block>
     <button bindtap="RequestData" value ="button">request</button>
+    <button bindtap="PostData" value = "buttonPost">post</button>
 </scroll-view>
 
