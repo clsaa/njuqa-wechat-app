@@ -1,7 +1,7 @@
 //app.js
 App({
   globalData: {
-    userInfo: null,
+    userInfos: null,
     avatarUrl: null,
     nickname: null,
     openId: 0,
@@ -36,6 +36,7 @@ App({
             },
             success(e) {
               console.log(e.data)
+              that.globalData.userInfos = e.data
               if(e.data['nickname'] == null){
                 wx.request({
                   url: 'https://njuqa.clsaa.com/v1/user',
@@ -62,7 +63,7 @@ App({
   },
   getUserInfo:function(cb){
     //var that = this
-    typeof cb == "function" && cb(this.globalData.userInfo)
+    typeof cb == "function" && cb(this.globalData.userInfos)
     // if(this.globalData.userInfo){
     //   typeof cb == "function" && cb(this.globalData.userInfo)
     // }else{

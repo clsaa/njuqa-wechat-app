@@ -12,12 +12,6 @@
 			<text>{{restNum}}字</text>
 		</view>
 
-		<view wx:if="{{imgs.length > 0}}" class="img-list">
-			<block wx:for="{{imgs}}" wx:for-item="img">
-				<image mode="aspectFill" src="{{img}}"></image>
-			</block>
-		</view>
-
 		<view class="btn-area">
 			<button type="default" formType="submit">提交</button>
 		</view>
