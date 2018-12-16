@@ -6,12 +6,26 @@ Page({
     motto: 'Hello',
     userInfo: {}
   },
-  //事件处理函数
-  bindViewTap: function() {
+  //跳转到我的回答
+  jumpmy_ans:function(options){
     wx.navigateTo({
-      url: ''
+      url: '../my_answer/my_answer',
     })
   },
+  //跳转到我的关注
+  jumpmy_att: function (options) {
+    wx.navigateTo({
+      url: '../my_attention/my_attention',
+    })
+  },
+  //跳转到我的提问
+  jumpmy_que: function (options) {
+    wx.navigateTo({
+      url: '../my_question/my_question',
+    })
+  },
+  //事件处理函数
+
   onLoad: function () {
     console.log('onLoad')
     var that = this

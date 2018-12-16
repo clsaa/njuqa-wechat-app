@@ -52,12 +52,12 @@
 }
 .my .my-item .myitem-name{
   flex: 5;
-  text-align: left;
+  text-align: middle;
   font-size: 34rpx;
-  color: #6d6d6d;
+  color: #00050a;
   line-height: 60rpx;
   padding: 30rpx 0;
-  border-bottom: solid 1px #ebebeb;
+  border-bottom: solid 1px #5ea5f5;
 }
 .my .my-item:last-child .myitem-name{
   border-bottom: none;
