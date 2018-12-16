@@ -16,7 +16,7 @@ App({
       success: function (res) {
         that.globalData.avatarUrl = res.userInfo.avatarUrl
         that.globalData.nickname = res.userInfo.nickName
-        that.globalData.userInfo = res.userInfo
+        that.globalData.userInfos = res.userInfo
         //console.log(res.userInfo)
       }
     })
@@ -64,15 +64,31 @@ App({
   getUserInfo:function(cb){
     //var that = this
     typeof cb == "function" && cb(this.globalData.userInfos)
-    // if(this.globalData.userInfo){
-    //   typeof cb == "function" && cb(this.globalData.userInfo)
-    // }else{
-    //   wx.getUserInfo({
-    //     success: function (res) {
-    //         that.globalData.userInfo = res.userInfo
-    //         typeof cb == "function" && cb(that.globalData.userInfo)
-    //     }
-    //   })
-    // }
+     /*
+     if(this.globalData.userInfo){
+       typeof cb == "function" && cb(this.globalData.userInfo)
+     }else{
+       wx.getUserInfo({
+         success: function (res) {
+             that.globalData.userInfo = res.userInfo
+             typeof cb == "function" && cb(that.globalData.userInfo)
+         }
+       })
+    }
+    */
+    /*
+    var that = this
+    if (this.globalData.userInfo) {
+      typeof cb == "function" && cb(this.globalData.userInfo)
+    } else {
+      wx.getUserInfo({
+        success: function (res) {
+          console.log('用户信息', res.userInfo)
+          that.globalData.userInfo = res.userInfo
+          typeof cb == "function" && cb(that.globalData.userInfo)
+        }
+      })
+    }
+    */
   }
 })

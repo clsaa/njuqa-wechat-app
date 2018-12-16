@@ -2,11 +2,13 @@
   "pages":[
     "pages/index/index",
     "pages/discovery/discovery",
+    "pages/displayAnswer/displayAnswer",
     "pages/notify/notify",
     "pages/more/more",
     "pages/answer/answer",
     "pages/question/question",
-    "pages/quiz/quiz"
+    "pages/quiz/quiz",
+    "pages/comment/comment"
   ],
   "window":{
     "backgroundTextStyle":"light",

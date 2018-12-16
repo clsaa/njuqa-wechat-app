@@ -22,24 +22,24 @@
                 <image class="item-more" mode="aspectFit" src="../../images/more.png"></image>
             </view>
             <view class="feed-content">
-                <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+                <view class="question" id="{{idx}}" bindtap="bindQueTap">
                     <a class="question-link">
                         <text>{{userInfo.nickName}}{{item.content}}
                         </text>
                     </a>
                 </view>
                 <view class="answer-body">
-                    <view bindtap="bindItemTap">
-                        <text class="answer-txt" aid="{{answer_id}}">{{item.answer_ctnt}}{{openId}}{{nickName}}</text>
+                    <view bindtap="bindItemTap" id="{{idx}}">
+                        <text class="answer-txt">查看答案</text>
                     </view>
-                    <view class="answer-actions" bindtap="bindItemTap">
+                    <view class="answer-actions">
                         <view class="like dot">
                             <a>{{item.good_num}} 赞同 </a>
                         </view>
-                        <view class="comments dot">
+                        <view class="comments dot" bindtap="CommentQuestion" id="{{idx}}">
                             <a>{{item.comment_num}} 评论 </a>
                         </view>
-                        <view class="follow-it">
+                        <view class="follow-it" bindtap="AttentionQuestion" uid="{{item.userId}}" id="{{item.id}}">
                             <a>关注问题</a>
                         </view>
                     </view>
@@ -47,7 +47,9 @@
             </view>
         </view>
     </block>
+    <!--
     <button bindtap="RequestData" value ="button">request</button>
     <button bindtap="PostData" value = "buttonPost">post</button>
+    <button bindtap="getData" value = "buttonPost">刷新</button>
+    -->
 </scroll-view>
-

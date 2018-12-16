@@ -5,7 +5,9 @@ var app = getApp()
 Page({
   data: {
     motto: '社区问答',
-    userInfo: {}
+    userInfo: {},
+    questionItem:{},
+    answerItem:{}
   },
   handleTextareaInput: function (e) {
     this.setData({
@@ -103,9 +105,14 @@ Page({
       url: '../question/question'
     })
   },
-  onLoad: function () {
+  onLoad: function (options) {
     console.log('onLoad')
     var that = this
+    // 获取上一个页面传递的问题内容
+    that.setData({
+      questionItem:JSON.parse(options.item)
+
+    })
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function(userInfo){
       //更新数据

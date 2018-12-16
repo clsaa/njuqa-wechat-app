@@ -25,6 +25,8 @@ Page({
   },
   handleFormSubmit: function () {
     var that = this
+    console.log("userinfo")
+    console.log(that.data.userinfo['id'])
     if (this.data.restNum == 200) {
       wx.showToast({
         title: '请填写内容',
@@ -42,7 +44,7 @@ Page({
       data: {
           content: that.data.quesContent,
           userId: that.data.userinfo["id"]
-        }
+      },
     })
   },
 });
