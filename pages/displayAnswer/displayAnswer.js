@@ -10,14 +10,11 @@ Page({
     answers:[]
   },
   //事件处理函数
-  bindItemTap: function () {
-    wx.navigateTo({
-      url: '../answer/answer'
-    })
-  },
   bindAnswerItemTap: function () {
+    var that = this
     wx.navigateTo({
-      url: '../answer/answer'
+      url: '../answer/answer?item='+
+        JSON.stringify(that.data.questionItem)
     })
   },
   // 新增options参数，options存储的是Index.js中
@@ -59,36 +56,18 @@ Page({
         "Content-Type": "application/json"
       },
       success: function (res) {
-        // 操作json数据
-        //var userInfo = [];
-        app.getUserInfo(function (userInfo) {
-          //更新数据
-          that.setData({
-            userInfo: userInfo
-          })
-        })
-        //console.log(userInfo);
         console.log("request answer");
         console.log(res.data);
-        var d = res.data;
         var text = res.data;
         that.setData({
           answers:text
         });
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
       }
     })
-
   },
-  // 可以关注当前问题，需要获取问题id和用户id
+  // 可以关注当前用户，需要获取用户id
   CommFunction: function () {
     var that = this;
-    var userId = that.data.userinfo['id']
     wx.request({
       url: 'https://njuqa.clsaa.com/v1/user/attention',
       data: {
@@ -105,12 +84,6 @@ Page({
         console.log("user attension successful")
         //console.log(userInfo);
 
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
       }
     })
   }

@@ -1,17 +1,17 @@
 <!--answer.wxml-->
 <view class="container">
-    <view class="question" bindtap="toQuestion">
-        <text class="question-title">选择 Kindle 而不是纸质书的原因是什么？</text>
+    <view class="question" bindtap="">
+        <text class="question-title">{{questionItem.content}}</text>
     </view>
     <view class="answerer-wrp">
         <view class="bg-half"></view>
         <view class="answerer flex-wrp">
             <view class="avatar flex-item">
-                <image src="../../images/icon1.jpeg"></image>
+                <image src="{{userInfo.avatarUrl}}"></image>
             </view>
             <view class="answerer-info flex-item">
-                <text class="answerer-name">Rebecca</text>
-                <text class="answerer-des">WEB前端*不靠谱天气预报员*想做代码小仙女</text>
+                <text class="answerer-name">{{userInfo.nickname}}</text>
+                <text class="answerer-des"></text>
             </view>
             <view class="follow flex-item">
                 <text>十 关注</text>
@@ -19,57 +19,15 @@
         </view>
     </view>
     <view class="question">
-    <view >请在此输入您的问题：</view>
-    <form bindsubmit="handleFormSubmit">
-		<view >
-			<textarea bindinput="handleTextareaInput" auto-focus="true" maxlength="200" placeholder="please input here" />
-		</view>
-
-		
-
-		<view wx:if="{{imgs.length > 0}}" class="img-list">
-			<block wx:for="{{imgs}}" wx:for-item="img">
-				<image mode="aspectFill" src="{{img}}"></image>
-			</block>
-		</view>
-
-		<view class="btn-area">
-			<button type="default" formType="submit">提交</button>
-		</view>
-
-	</form>
-  </view>
-    <view class="answer-footer flex-wrp">
-        <view class="good flex-item">
-            <view class="good-bad">
-                <image src="../../images/good-bad.png"></image>
-            </view>
-            <view class="good-num">2.1k</view>
-        </view>
-        <view class="operation-wrp flex-item">
-            <view class="operation flex-wrp flex-tab">
-                <view class="operation-btn flex-item">
-                    <image src="../../images/flag.png"></image>
-                    <text>没有帮助</text>
-                </view>
-                <view class="operation-btn flex-item">
-                    <image src="../../images/heart2.png"></image>
-                    <text>感谢</text>
-                </view>
-                <view class="operation-btn flex-item">
-                    <image src="../../images/star2.png"></image>
-                    <text>收藏</text>
-                </view>
-                <view class="operation-btn flex-item">
-                    <image src="../../images/comment.png"></image>
-                    <text>302</text>
-                </view>
-
-            </view>
-        </view>
-
-
-
-    </view>
+      <view >请在此输入您的问题：</view>
+        <form bindsubmit="handleFormSubmit">
+		      <view >
+			      <textarea bindinput="handleTextareaInput" auto-focus="true" maxlength="200" placeholder="please input here" />
+		      </view>
+		      <view class="btn-area">
+			      <button type="default" formType="submit">提交</button>
+		      </view>
+	      </form>
+      </view>
 </view>
 

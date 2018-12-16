@@ -148,3 +148,38 @@
     font-size: 14rpx;
     color: #bebebe;
 }
+.section{
+    display: block;
+    background: #fff;
+    color: #2a2a2a;
+   
+}
+.section textarea{
+    height: 320rpx;
+    font-size: 30rpx;
+    color: #666;
+    display: block;
+    width: 100%;
+    padding: 15px 10px;
+}
+
+.section.section_gap{
+    font-size: 12px;
+    color: #999;
+    border-top: solid 1px #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30rpx;
+}
+.btn-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+.btn-area button{
+    width: 700rpx;
+    background: #18b7ee;
+    color: #fff;
+}

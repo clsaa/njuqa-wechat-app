@@ -2,24 +2,11 @@
 <view class="container">
     <view class="question-wrp">
         <view class="question-item">
-            <view class="que-tag">
-                <text class="tag">阅读</text>
-                <text class="tag">电子书</text>
-                <text class="tag">Kindle</text>
-                <text class="tag">书籍</text>
-                <text class="tag">文学</text>
-            </view>
             <view class="que-title">
-                <!--
-                选择 Kindle 而不是纸质书的原因是什么？
-                -->
                 <!--显示对应的问题内容, questionItem.content-->
                 {{questionItem.content}}
             </view>
             <view class="que-content">
-                <!--
-                WEB前端*不靠谱天气预报员*想做代码小仙女
-                -->
                 <!--显示对应的用户名, userinfo.nickname-->
                 {{userinfo.nickname}}
             </view>
@@ -53,13 +40,13 @@
         </view>
     </view>
     <view class="answer-feed" wx:for="{{answers}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" wx:key="{{item.index}}">
-        <view  bindtap="bindItemTap" class="feed-item">
+        <view  bindtap="" class="feed-item">
             <view class="feed-source">
                 <a class="" bindTap="">
                     <view class="avatar">
                         <image src="../../images/icon1.jpeg"></image>
                     </view>
-                    <text>Rebecca</text>
+                    <text>{{userinfo.nickname}}</text>
                 </a>
             </view>
             <view class="feed-content">
@@ -68,53 +55,13 @@
                         <text class="answer-txt">{{item.content}}</text>
                     </view>
                     <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
                         <view class="comments dot">
                             <a>254 评论 </a>
                         </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
-
                     </view>
                 </view>
             </view>
         </view>
-        <!--
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">填充数据</text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
-
-                    </view>
-                </view>
-            </view>
-        </view>
-        -->
-
-
     </view>
 </view>
 

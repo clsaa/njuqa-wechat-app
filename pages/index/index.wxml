@@ -12,19 +12,10 @@
 
     <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" wx:key="{{item.index}}">
         <view class="feed-item">
-            <view class="feed-source">
-                <a class="">
-                    <view class="avatar">
-                        <image src="{{item.feed_source_img}}"></image>
-                    </view>
-                    <text>{{item.feed_source_name}}{{item.feed_source_txt}}</text>
-                </a>
-                <image class="item-more" mode="aspectFit" src="../../images/more.png"></image>
-            </view>
             <view class="feed-content">
-                <view class="question" id="{{idx}}" bindtap="bindQueTap">
+                <view class="question" id="{{idx}}" bindtap="">
                     <a class="question-link">
-                        <text>{{userInfo.nickName}}{{item.content}}
+                        <text>{{item.content}}
                         </text>
                     </a>
                 </view>
@@ -33,9 +24,6 @@
                         <text class="answer-txt">查看答案</text>
                     </view>
                     <view class="answer-actions">
-                        <view class="like dot">
-                            <a>{{item.good_num}} 赞同 </a>
-                        </view>
                         <view class="comments dot" bindtap="CommentQuestion" id="{{idx}}">
                             <a>{{item.comment_num}} 评论 </a>
                         </view>
