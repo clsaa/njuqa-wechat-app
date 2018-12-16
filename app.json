@@ -2,13 +2,16 @@
   "pages":[
     "pages/index/index",
     "pages/discovery/discovery",
+    "pages/my_answer/my_answer",
     "pages/displayAnswer/displayAnswer",
     "pages/notify/notify",
     "pages/more/more",
     "pages/answer/answer",
     "pages/question/question",
     "pages/quiz/quiz",
-    "pages/comment/comment"
+    "pages/comment/comment",
+    "pages/my_question/my_question",
+    "pages/my_attention/my_attention"
   ],
   "window":{
     "backgroundTextStyle":"light",
