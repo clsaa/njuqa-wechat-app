@@ -15,25 +15,25 @@
       <view class="myitem-icon flex-item" >
         <image src="../../images/eye.png"></image>
       </view>
-      <view class="myitem-name flex-item">
+      <button class="myitem-name flex-item" bindtap='jumpmy_att'>
         <text>我的关注</text>
-      </view>
+      </button>
     </view>
     <view class="my-item flex-wrp">
       <view class="myitem-icon flex-item" >
         <image src="../../images/draft.png"></image>
       </view>
-      <view class="myitem-name flex-item">
+      <button class="myitem-name flex-item" bindtap='jumpmy_que'>
         <text>我的提问</text>
-      </view>
+      </button>
     </view>
     <view class="my-item flex-wrp">
       <view class="myitem-icon flex-item" >
         <image src="../../images/zhi.png"></image>
       </view>
-      <view class="myitem-name flex-item">
+      <button class="myitem-name flex-item" bindtap='jumpmy_ans'>
         <text>我的回答</text>
-      </view>
+      </button>
     </view>
 
   </view>
