@@ -27,9 +27,5 @@
             </view>
         </view>
     </block>
-    <!--
-    <button bindtap="RequestData" value ="button">request</button>
-    <button bindtap="PostData" value = "buttonPost">post</button>
-    <button bindtap="getData" value = "buttonPost">刷新</button>
-    -->
+
 </scroll-view>
