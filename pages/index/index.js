@@ -59,6 +59,7 @@ Page({
   },
   // 绑定关注问题按钮，需要获取问题id和用户id
   // 目前设置的都是静态值。
+  /*
   QuestionAttention:function(){
     var that = this;
     var userId = "d12079a2f9464fea96f414612c5ac9ab"
@@ -88,19 +89,113 @@ Page({
       }
     })
   },
+  */
   // 响应评论的函数，需要获取当前用户id和问题id，问题
   // 问题id可以使用e.currentTarget.id方法获取到
   // 用户id 可以使用userinfo获取到
-  AttensionQuestion: function (e) {
+  AttentionQuestion: function (e) {
     // console.log(e.currentTarget.id)
-    var uId = e.currentTarget.id
+    var qId = e.currentTarget.id
+    var that = this
     //var qId = e.currentTarget.qid
-    console.log(uId.userId)
+    //console.log(idx)
+    //qId = that.data.feed[idx]['id']
+    console.log(qId)
     //console.log(qId)
     console.log("CommentTest")
     app.getUserInfo(function (userInfo) {
       console.log(userInfo)
+      that.setData({
+        userInfo:userInfo
+      })
     })
+    var userId = that.data.userInfo.id
+    console.log(userId)
+    var url1 = "https://njuqa.clsaa.com/v1/user/"
+    var url2 = "/question/all/"
+    wx.request({
+      url: url1+userId+url2,
+      //data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: {
+        "Content-Type": "application/json"
+      }, // 设置请求的 header 默认是application/json
+      success: function (res) {
+        // 操作json数据
+        //var userInfo = [];
+        console.log(res.data)
+        //console.log(userInfo);
+        var flag = 1
+        for (var item in res.data){
+          if (res.data[item] != null){
+            if (res.data[item].id == qId){
+              console.log("attensioned")
+              flag = 0
+            }
+            //console.log(res.data[item])
+          }
+          console.log("for loop")
+        }
+        if (flag == 1){
+          wx.request({
+            url: 'https://njuqa.clsaa.com/v1/question/attention',
+            data: {
+              userId: userId,
+              questionId: qId
+            },
+            method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+            header: {
+              "Content-Type": "application/json"
+            }, // 设置请求的 header 默认是application/json
+            success: function (res) {
+              // 操作json数据
+              //var userInfo = [];
+              console.log("question attension successful")
+              //console.log(userInfo);
+
+            },
+            fail: function () {
+              // fail
+            },
+            complete: function () {
+              // complete
+            }
+          })
+        }
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+    /*
+    wx.request({
+      url: 'https://njuqa.clsaa.com/v1/question/attention',
+      data: {
+        userId: userId,
+        questionId: qId
+      },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: {
+        "Content-Type": "application/json"
+      }, // 设置请求的 header 默认是application/json
+      success: function (res) {
+        // 操作json数据
+        //var userInfo = [];
+        console.log("question attension successful")
+        //console.log(userInfo);
+
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+*/
     /*
     wx.navigateTo({
       url: "userinfo/userinfo?u_id=" + uId,
