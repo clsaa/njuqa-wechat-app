@@ -1,2 +1,3 @@
-<!--pages/my_answer/my_answer.wxml-->
-
+<view  wx:for="{{logs}}" wx:for-item="value">
+  {{value.content}}
+</view>

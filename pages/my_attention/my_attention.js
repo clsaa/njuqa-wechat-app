@@ -1,66 +1,43 @@
-// pages/my_attention/mt_attention.js
+
+var util = require('../../utils/util.js')
+var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    logs: []
+  },
+  onLoad: function () {
+    this.getdata();
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //使用数据实现刷新效果
+  getdata: function () {
+    //var feed = [];
+    var that = this;
+    var userId = that.data.userInfo.id
+    app.getUserInfo(function (userInfo) {
+      console.log(userInfo)
+    })
+    var url1 = "https://njuqa.clsaa.com/v1/question/"
+    var url2 = userId
+    var url3 = "/question/all"
+    wx.request({
+      url: url1 + url2 + url3,
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: {
+        "Content-Type": "application/json"
+      }, // 设置请求的 header 默认是application/json
+      data: {
+        id: userId
+      },
+      success: function (res) {
+        // 操作json数据
+        console.log("request data");
+        console.log(res.data);
+        var text = res.data;
+        that.setData({
+          logs: res.data.reaults
+        });
+      }
+    })
   }
 })

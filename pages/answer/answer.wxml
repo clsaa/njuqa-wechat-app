@@ -19,7 +19,7 @@
         </view>
     </view>
     <view class="question">
-      <view >请在此输入您的问题：</view>
+      <view >请在此输入您的回答：</view>
         <form bindsubmit="handleFormSubmit">
 		      <view >
 			      <textarea bindinput="handleTextareaInput" auto-focus="true" maxlength="200" placeholder="please input here" />

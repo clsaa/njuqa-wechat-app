@@ -1,2 +1,4 @@
 <!--pages/my_attention/mt_attention.wxml-->
-<text>pages/my_attention/mt_attention.wxml</text>
+<view  wx:for="{{logs}}" wx:for-item="value">
+  {{value.content}}
+</view>
