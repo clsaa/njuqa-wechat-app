@@ -153,11 +153,11 @@ Page({
     //var feed = [];
     var that = this;
     var userid = that.data.userInfo.id
-    // var url1 = "https://njuqa.clsaa.com/v1/user/"
-    // var url2 = userid
-    // var url3 = "/question/all/"
+    var url1 = "https://njuqa.clsaa.com/v1/user/"
+    var url2 = userid
+    var url3 = "/question/all/"
     wx.request({
-      url: 'https://njuqa.clsaa.com/v1/question/' + userid + '/',
+      url: url1+url2+url3,
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: {
         "Content-Type": "application/json"
