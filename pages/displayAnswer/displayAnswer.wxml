@@ -21,7 +21,7 @@
                         <text>27</text>
                     </view>
                 </view>
-                <view class="right" bindtap="CommFunction">
+                <view class="right" bindtap="AttentionFunction">
                     关注用户
                 </view>
             </view>
@@ -57,6 +57,9 @@
                     <view class="answer-actions">
                         <view class="comments dot">
                             <a>254 评论 </a>
+                        </view>
+                        <view class="comments dot" id = "{{idx}}" bindtap="CommentAnswer">
+                            <a> 评论 </a>
                         </view>
                     </view>
                 </view>

@@ -34,7 +34,15 @@
       <button class="myitem-name flex-item" bindtap='jumpmy_ans'>
         <text>我的回答</text>
       </button>
+      
     </view>
-
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/icon-my-act.png"></image>
+      </view>
+      <button class="myitem-name flex-item" bindtap='jumpmy_index'>
+        <text>身份验证</text>
+      </button>
+    </view>
   </view>
 </view>

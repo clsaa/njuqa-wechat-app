@@ -6,8 +6,8 @@ Page({
   data: {
     motto: '社区问答',
     userInfo: {},
-    questionItem: {},
-    questionUser: {}
+    answerItem: {},
+    //answerUser: {}
   },
   handleTextareaInput: function (e) {
     this.setData({
@@ -57,6 +57,7 @@ Page({
       })
       return
     }
+    var that = this
     wx.showModal({
       title: '提示',
       content: '是否提交您的问题',
@@ -65,33 +66,73 @@ Page({
       duration: 2000,
       success: function () {
         //提交表单
+        
         var formData = {
-          uid: this.data.userInfo.id,
-          //user_name: "",
-          //baby_sex: e.detail.value.baby_sex,
-          //baby_age: e.detail.value.baby_age
+        
         }
         console.log(formData)
-        /*
-        app.apiFunc.upload_file(app.apiUrl.modify_user, this.data.logo, 'photos', formData,
-          function (res) {
-            console.log(res);
-          },
-          function () { })
-        */
-
+       
+        console.log(answContent)
+        //var that = this
         wx.request({
-          url: 'https://njuqa.clsaa.com/comment/addComment',
-          //data: {},
-          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-          header: {
-            "Content-Type": "application/json"
-          }, // 设置请求的 header 默认是application/json
+          url:'https://njuqa.clsaa.com/comment/getAllByUserId',
+          method:'GET',
+          header:{
+            "Content-Type":"application/json"
+          },
           data: {
-            content: answContent,
-            questionId: that.data.questionItem.questionId,
-            //type: "SHOW",
             userId: that.data.userInfo.id
+          },
+          success: function (res) {
+            // 操作json数据
+            //var userInfo = [];
+            console.log("answer attension")
+            //console.log(userInfo);
+            var flag = 1
+            var commentId = that.data.answerItem.id
+            for (var item in res.data) {
+              if (res.data[item] != null) {
+                if (res.data[item].id == commentId) {
+                  console.log("commented")
+                  flag = 0
+                }
+                //console.log(res.data[item])
+              }
+              console.log("for loop")
+              console.log(that.data.answerItem.id)
+              console.log(that.data.userInfo.id)
+            }
+            if (flag == 1) {
+              var aId = that.data.answerItem.id
+              var uId = that.data.userInfo.id
+              wx.request({
+                url: 'https://njuqa.clsaa.com/comment/addComment?answerId='+aId+'&content='+answContent+'&userId='+uId,
+              
+                method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                header: {
+                  "Content-Type": "application/json"
+                }, // 设置请求的 header 默认是application/json
+                success: function (res) {
+                  console.log(res)
+                  
+                  console.log("comment answer successful")
+                  //console.log(userInfo);
+
+                },
+                fail: function () {
+                  // fail
+                },
+                complete: function () {
+                  // complete
+                }
+              })
+            }
+          },
+          fail: function () {
+            // fail
+          },
+          complete: function () {
+            // complete
           }
         })
 
@@ -109,10 +150,11 @@ Page({
     console.log('onLoad')
     var that = this
     // 获取上一个页面传递的问题内容
+    // questionItem 是index页面用户点击的那个问题的所有内容
     that.setData({
-      questionItem:JSON.parse(options.item)
+      answerItem:JSON.parse(options.item)
     })
-    console.log(that.data.questionItem)
+    console.log(that.data.answerItem)
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function (userInfo) {
       //更新数据
@@ -120,40 +162,11 @@ Page({
         userInfo: userInfo
       })
     })
-    that.getQuestionUser()
+    console.log("comment.js")
+    console.log(that.data.userInfo)
+    //that.getQuestionUser()
   },
   // 获取当前问题的提出者的信息
-  getQuestionUser :function(){
-    var that = this
-    var userId = that.data.userInfo.id
-    wx.request({
-      url: 'https://njuqa.clsaa.com/v1/user/'+userId,
-      //data: {},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {
-        "Content-Type": "application/json"
-      }, // 设置请求的 header 默认是application/json
-      data: {
-        id: userId
-      },
-      success: function (res) {
-        // 操作json数据
-        //var userInfo = [];
-        var text = res.data;
-        that.setData({
-          questionUser:text
-        });
-        //console.log(userInfo);
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
-    })
-
-  },
   tapName: function (event) {
     console.log(event)
   }

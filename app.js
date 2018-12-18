@@ -5,6 +5,7 @@ App({
     avatarUrl: null,
     nickname: null,
     openId: 0,
+    isAdmin: false,
   },
   onLaunch: function () {
     //调用API从本地缓存中获取数据
@@ -17,6 +18,9 @@ App({
         that.globalData.avatarUrl = res.userInfo.avatarUrl
         that.globalData.nickname = res.userInfo.nickName
         that.globalData.userInfos = res.userInfo
+        if (res.userInfo.identity == "ADMIN"){
+          that.globalData.isAdmin = true
+        }
         //console.log(res.userInfo)
       }
     })
@@ -36,7 +40,12 @@ App({
             },
             success(e) {
               console.log(e.data)
+              console.log(e.data['identity'])
               that.globalData.userInfos = e.data
+              if(e.data['identity'] == "ADMIN"){
+                that.globalData.isAdmin = true
+                console.log("right")
+              }
               if(e.data['nickname'] == null){
                 wx.request({
                   url: 'https://njuqa.clsaa.com/v1/user',
@@ -53,6 +62,8 @@ App({
                 //console.log(that.globalData.avatarUrl)
                 //console.log(that.globalData.nickname)
               }
+              
+              
             }
           })
         } else {

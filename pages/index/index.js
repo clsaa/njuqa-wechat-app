@@ -2,13 +2,15 @@
 
 var util = require('../../utils/util.js')
 var app = getApp()
+var refreshAgain = true
 Page({
   data: {
     feed: [],
     feed_length: 0,
     userInfo:{},
     openid:0,
-    nickName: ""
+    nickName: "",
+    isAdmin:false,
   },
   textData: 'before',
   //事件处理函数
@@ -28,9 +30,6 @@ Page({
   bindQueTap: function (e) {
     var idx = e.currentTarget.id
     var item = this.data.feed[idx]
-    //console.log(idx)
-    //console.log(item['id'])
-    //console.log(item['userId'])
     wx.navigateTo({
       url: '../question/question?item='+
       JSON.stringify(item)
@@ -41,6 +40,9 @@ Page({
     console.log('onLoad')
     //调用应用实例的方法获取全局数据
     this.getData();
+  },
+  onShow: function() {
+    this.getData()
   },
   upper: function () {
     wx.showNavigationBarLoading()
@@ -57,39 +59,7 @@ Page({
   nextLoad: function(){
     console.log("nextLoad")
   },
-  // 绑定关注问题按钮，需要获取问题id和用户id
-  // 目前设置的都是静态值。
-  /*
-  QuestionAttention:function(){
-    var that = this;
-    var userId = "d12079a2f9464fea96f414612c5ac9ab"
-    
-    wx.request({
-      url: 'https://njuqa.clsaa.com/v1/question/attention',
-      data: {
-        userId: userId,
-        questionId: "2"
-      },
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {
-        "Content-Type": "application/json"
-      }, // 设置请求的 header 默认是application/json
-      success: function (res) {
-        // 操作json数据
-        //var userInfo = [];
-        console.log("question attension successful")
-        //console.log(userInfo);
-
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
-    })
-  },
-  */
+  
   // 响应评论的函数，需要获取当前用户id和问题id，问题
   // 问题id可以使用e.currentTarget.id方法获取到
   // 用户id 可以使用userinfo获取到
@@ -97,9 +67,6 @@ Page({
     // console.log(e.currentTarget.id)
     var qId = e.currentTarget.id
     var that = this
-    //var qId = e.currentTarget.qid
-    //console.log(idx)
-    //qId = that.data.feed[idx]['id']
     console.log(qId)
     //console.log(qId)
     console.log("CommentTest")
@@ -170,23 +137,25 @@ Page({
         // complete
       }
     })
-    /*
-    wx.request({
-      url: 'https://njuqa.clsaa.com/v1/question/attention',
-      data: {
-        userId: userId,
-        questionId: qId
-      },
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {
-        "Content-Type": "application/json"
-      }, // 设置请求的 header 默认是application/json
-      success: function (res) {
-        // 操作json数据
-        //var userInfo = [];
-        console.log("question attension successful")
-        //console.log(userInfo);
 
+  },
+  // 关闭问题的函数
+  CloseQuestion: function (e) {
+        // console.log(e.currentTarget.id)
+    var idx = e.currentTarget.id
+   
+    var item = this.data.feed[idx]
+    
+    wx.request({
+      url:'https://njuqa.clsaa.com/v1/question/'+item.id+'/close/statue/1',
+      method: 'PUT',
+      header: {
+        'Content-Type':'application/json'
+      },
+      success: function (res) {
+        console.log(res)
+        console.log("close question")
+        
       },
       fail: function () {
         // fail
@@ -195,28 +164,34 @@ Page({
         // complete
       }
     })
-*/
-    /*
-    wx.navigateTo({
-      url: "userinfo/userinfo?u_id=" + uId,
-    })
-    */
+    
   },
-  // 知识为了测试获取相应的问题id而设置的测试函数，后期可移除
-  CommentQuestion: function (e) {
-        // console.log(e.currentTarget.id)
+  // 删除问题
+  DeleteQuestion: function (e) {
+    // console.log(e.currentTarget.id)
     var idx = e.currentTarget.id
-    console.log(idx)
-    console.log(this.data.feed[idx])
-    console.log("comment question")
     var item = this.data.feed[idx]
-    
-    wx.navigateTo({
-      url: "../comment/comment?item=" + 
-      JSON.stringify(item),
+
+    wx.request({
+      url: 'https://njuqa.clsaa.com/v1/question/' + item.id + '/delete/statue/1',
+      method: 'PUT',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res)
+        
+        console.log("delete question")
+       
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
     })
-    
-    
+
   },
   // 用于测试获取用户Userinfo，因为请求是异步的，
   // 所以很多时候可能请求不到数据。
@@ -227,11 +202,7 @@ Page({
       console.log(userInfo)
     })
     console.log("getUserinfoFunction")
-    /*
-    wx.navigateTo({
-      url: "userinfo/userinfo?u_id=" + uId,
-    })
-    */
+  
   },
   //网络请求数据, 实现首页刷新
   refresh: function () {
@@ -247,11 +218,18 @@ Page({
         console.log(data.data);
       });
   },
-
+  testFunction: function(){
+    console.log(app.globalData.isAdmin)
+  },
   //使用数据实现刷新效果
   getData: function () {
     //var feed = [];
     var that = this;
+    that.setData({
+      isAdmin:app.globalData.isAdmin
+    })
+    console.log(app.globalData.nickname)
+    console.log(that.data.isAdmin)
     wx.request({
       url: "https://njuqa.clsaa.com/v1/all/question/",
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
@@ -262,6 +240,7 @@ Page({
         // 操作json数据
         console.log("request data");
         console.log(res.data);
+        //console.log(that.data.userInfo)
         var text = res.data;
         that.setData({
           feed: text,
@@ -271,5 +250,9 @@ Page({
         });
       }
     })
+    if (refreshAgain == true){
+      refreshAgain = false
+      that.testFunction();
+    }
   }
 })

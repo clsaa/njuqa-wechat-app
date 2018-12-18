@@ -66,7 +66,7 @@ Page({
     })
   },
   // 可以关注当前用户，需要获取用户id
-  CommFunction: function () {
+  AttentionFunction: function () {
     var that = this;
     wx.request({
       url: 'https://njuqa.clsaa.com/v1/user/attention',
@@ -86,5 +86,19 @@ Page({
 
       }
     })
-  }
+  },
+  // 只是为了测试获取相应的问题id而设置的测试函数，后期可移除
+  CommentAnswer: function (e) {
+    // console.log(e.currentTarget.id)
+    var idx = e.currentTarget.id
+    console.log(idx)
+    console.log(this.data.answers[idx])
+    console.log("comment answer")
+    var item = this.data.answers[idx]
+
+    wx.navigateTo({
+      url: "../comment/comment?item=" +
+        JSON.stringify(item),
+    })
+  },
 })

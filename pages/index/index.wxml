@@ -24,8 +24,11 @@
                         <text class="answer-txt">查看答案</text>
                     </view>
                     <view class="answer-actions">
-                        <view class="comments dot" bindtap="CommentQuestion" id="{{idx}}">
-                            <a>{{item.comment_num}} 评论 </a>
+                        <view class="comments dot" bindtap="CloseQuestion" id="{{idx}}" wx:if="{{isAdmin==true}}">
+                            <a> 关闭问题 </a>
+                        </view>
+                        <view class="comments dot" bindtap="DeleteQuestion" id="{{idx}}" wx:if="{{isAdmin==true}}">
+                            <a> 删除问题 </a>
                         </view>
                         <view class="follow-it" bindtap="AttentionQuestion" uid="{{item.userId}}" id="{{item.id}}">
                             <a>关注问题</a>
@@ -35,9 +38,4 @@
             </view>
         </view>
     </block>
-    <!--
-    <button bindtap="RequestData" value ="button">request</button>
-    <button bindtap="PostData" value = "buttonPost">post</button>
-    <button bindtap="getData" value = "buttonPost">刷新</button>
-    -->
 </scroll-view>

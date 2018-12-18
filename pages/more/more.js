@@ -24,6 +24,13 @@ Page({
       url: '../my_question/my_question',
     })
   },
+  //跳转到index页面，用于刷新用户的身份信息
+  jumpmy_index: function (options) {
+    console.log(app.globalData.isAdmin)
+    wx.switchTab({
+      url: '../index/index',
+    })
+  },
   //事件处理函数
 
   onLoad: function () {
