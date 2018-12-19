@@ -3,29 +3,30 @@
   <view class="toptab flex-item " ></view>
 </view>
 <scroll-view scroll-y="true" class="container notify withtab" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-  <view class="ctnt0" hidden="">
-    <view class="unread">
-      <text>0 条未读</text>
-      <image src="../../images/allread.png"></image>
-    </view>
-    <view class="notify-item flex-wrp">
-      <view class="avatar flex-item">
-        <image src="../../images/icon1.jpeg"></image>
-      </view>
-      <view class="notify-content flex-item">
-        <text class="notify-source">Rebecca  回答了问题</text>
-        <text class="notify-title">C#如何在不覆盖原有文件的情况下直接修改某一部分的内容？</text>
-      </view>
-    </view>
-    <view class="notify-item flex-wrp">
-      <view class="avatar flex-item">
-        <image src="../../images/icon1.jpeg"></image>
-      </view>
-      <view class="notify-content flex-item">
-        <text class="notify-source">Rebecca  回答了问题</text>
-        <text class="notify-title">C#如何在不覆盖原有文件的情况下直接修改某一部分的内容？</text>
-      </view>
-    </view>
-  </view>
+   <block wx:for="{{answerByAttenUser}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" wx:key="{{item.index}}">
+        <view class="feed-item">
+            <view class="feed-content">
+                <view class="question" id="{{idx}}" bindtap="">
+                    <a class="question-link">
+                        <text>{{item.content}}
+                        </text>
+                    </a>
+                </view>
+                <view class="answer-body">
+                    <view bindtap="bindItemTap" id="{{idx}}">
+                        <text class="answer-txt">查看答案</text>
+                    </view>
+                    <view class="answer-actions">
+                        <view class="comments dot" bindtap="CommentQuestion" id="{{idx}}">
+                            <a>{{item.comment_num}} 评论 </a>
+                        </view>
+                        <view class="follow-it" bindtap="CloseQuestion" id="{{idx}}">
+                            <a>关闭问题</a>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
 
 </scroll-view>

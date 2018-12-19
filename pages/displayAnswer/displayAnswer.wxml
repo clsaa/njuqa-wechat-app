@@ -8,7 +8,6 @@
             </view>
             <view class="que-content">
                 <!--显示对应的用户名, userinfo.nickname-->
-                {{userinfo.nickname}}
             </view>
             <view class="que-follow">
                 <view class="left">
@@ -29,10 +28,6 @@
         </view>
     
         <view class="que-operate flex-wrp">
-            <view class="invite flex-item">
-                <image src="../../images/invite.png"></image>
-                <text>邀请回答</text>
-            </view>
             <view class="write flex-item" bindtap="bindAnswerItemTap">
                 <image src="../../images/write.png"></image>
                 <text>写回答</text>
@@ -44,7 +39,7 @@
             <view class="feed-source">
                 <a class="" bindTap="">
                     <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
+                        <image src="{{userinfo.avatarUrl}}"></image>
                     </view>
                     <text>{{userinfo.nickname}}</text>
                 </a>
@@ -55,9 +50,6 @@
                         <text class="answer-txt">{{item.content}}</text>
                     </view>
                     <view class="answer-actions">
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
                         <view class="comments dot" id = "{{idx}}" bindtap="CommentAnswer">
                             <a> 评论 </a>
                         </view>

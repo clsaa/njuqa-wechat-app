@@ -16,7 +16,7 @@
         <image src="../../images/eye.png"></image>
       </view>
       <button class="myitem-name flex-item" bindtap='jumpmy_att'>
-        <text>我的关注</text>
+        <text>关注的问题</text>
       </button>
     </view>
     <view class="my-item flex-wrp">
