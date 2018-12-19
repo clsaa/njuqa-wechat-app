@@ -16,38 +16,6 @@ Page({
     });
     answContent = e.detail.value;
   },
-  uploadFile: function () {
-    var _this = this;
-    wx.showActionSheet({
-      itemList: ['从相册中选择', '拍照'],
-      itemColor: "#18b7ee",
-      success: function (res) {
-        if (!res.cancel) {
-          if (res.tapIndex == 0) {
-            _this.chooseWxImage('album')
-          } else if (res.tapIndex == 1) {
-            _this.chooseWxImage('camera')
-          }
-        }
-      }
-    })
-  },
-  chooseWxImage: function (type) {
-    var _this = this;
-    wx.chooseImage({
-      count: 1, // 默认9
-      sizeType: ['original', 'compressed'],
-      sourceType: [type],
-      success: function (res) {
-        var imgsArr = _this.data.imgs;
-        imgsArr.push(res.tempFilePaths[0]);
-
-        _this.setData({
-          imgs: imgsArr
-        })
-      }
-    })
-  },
   handleFormSubmit: function () {
     if (this.data.restNum == 200) {
       wx.showToast({
@@ -66,7 +34,6 @@ Page({
       duration: 2000,
       success: function () {
         //提交表单
-        
         var formData = {
         
         }

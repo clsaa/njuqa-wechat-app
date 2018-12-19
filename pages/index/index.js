@@ -171,6 +171,7 @@ Page({
     // console.log(e.currentTarget.id)
     var idx = e.currentTarget.id
     var item = this.data.feed[idx]
+    console.log(item)
 
     wx.request({
       url: 'https://njuqa.clsaa.com/v1/question/' + item.id + '/delete/statue/1',

@@ -44,7 +44,7 @@ Page({
   },
   upper: function () {
     wx.showNavigationBarLoading()
-    this.refresh();
+    // this.refresh();
     console.log("upper");
     setTimeout(function () { wx.hideNavigationBarLoading(); wx.stopPullDownRefresh(); }, 2000);
   },
@@ -57,27 +57,28 @@ Page({
   nextLoad: function () {
     console.log("nextLoad")
   },
-  // 绑定关注问题按钮，需要获取问题id和用户id
-  // 目前设置的都是静态值。
-  QuestionAttention: function () {
-    var that = this;
-    var userId = "d12079a2f9464fea96f414612c5ac9ab"
+  //关闭问题操作
+  CloseQuestion: function (e) {
+    // console.log(e.currentTarget.id)
+   
+    var idx = e.currentTarget.id
+
+    var item = this.data.feed[idx]
 
     wx.request({
-      url: 'https://njuqa.clsaa.com/v1/question/attention',
-      data: {
-        userId: userId,
-        questionId: "2"
-      },
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      url: 'https://njuqa.clsaa.com/v1/question/' + item.id + '/close/statue/1',
+      method: 'PUT',
       header: {
-        "Content-Type": "application/json"
-      }, // 设置请求的 header 默认是application/json
+        'Content-Type': 'application/json'
+      },
+      data:{
+        closeStatus:1,
+        questionId:item.id
+
+      },
       success: function (res) {
-        // 操作json数据
-        //var userInfo = [];
-        console.log("question attension successful")
-        //console.log(userInfo);
+        console.log(res)
+        console.log("close question")
 
       },
       fail: function () {
@@ -87,26 +88,9 @@ Page({
         // complete
       }
     })
+
   },
-  // 响应评论的函数，需要获取当前用户id和问题id，问题
-  // 问题id可以使用e.currentTarget.id方法获取到
-  // 用户id 可以使用userinfo获取到
-  AttensionQuestion: function (e) {
-    // console.log(e.currentTarget.id)
-    var uId = e.currentTarget.id
-    //var qId = e.currentTarget.qid
-    console.log(uId.userId)
-    //console.log(qId)
-    console.log("CommentTest")
-    app.getUserInfo(function (userInfo) {
-      console.log(userInfo)
-    })
-    /*
-    wx.navigateTo({
-      url: "userinfo/userinfo?u_id=" + uId,
-    })
-    */
-  },
+  
   // 知识为了测试获取相应的问题id而设置的测试函数，后期可移除
   CommentQuestion: function (e) {
     // console.log(e.currentTarget.id)
@@ -123,20 +107,7 @@ Page({
 
 
   },
-  // 用于测试获取用户Userinfo，因为请求是异步的，
-  // 所以很多时候可能请求不到数据。
-  // getUserinfoFunction: function () {
-  //   // console.log(e.currentTarget.id)
-  //   console.log("getUserinfoFunction")
-  //   app.getUserInfo(function (userInfo) {
-  //     console.log(userInfo)
-  //   })
-  //   console.log("getUserinfoFunction")
-  //   /*
-    // wx.navigateTo({
-    //   url: "userinfo/userinfo?u_id=" + uId,
-    // })
-    
+ 
   
 
   //使用数据实现刷新效果

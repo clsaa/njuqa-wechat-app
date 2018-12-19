@@ -44,7 +44,7 @@ Page({
   },
   upper: function () {
     wx.showNavigationBarLoading()
-    this.refresh();
+    // this.refresh();
     console.log("upper");
     setTimeout(function () { wx.hideNavigationBarLoading(); wx.stopPullDownRefresh(); }, 2000);
   },

@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/discovery/discovery",
     "pages/my_answer/my_answer",
@@ -13,39 +13,44 @@
     "pages/my_question/my_question",
     "pages/my_attention/my_attention"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0068C4",
     "navigationBarTitleText": "社区问答",
-    "navigationBarTextStyle":"white",
-    "enablePullDownRefresh":true
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#626567",
     "selectedColor": "#2A8CE5",
     "backgroundColor": "#FBFBFB",
     "borderStyle": "white",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "浏览",
-      "iconPath": "images/index.png",
-      "selectedIconPath": "images/index_focus.png"
-    }, {
-      "pagePath":"pages/quiz/quiz",
-      "text":"提问",
-      "iconPath":"images/icon-quiz.png",
-      "selectedIconPath":"images/icon-quiz-act.png"
-    }, {
-      "pagePath": "pages/notify/notify",
-      "text": "回答",
-      "iconPath": "images/ring.png",
-      "selectedIconPath": "images/ring_focus.png"
-    }, {
-      "pagePath": "pages/more/more",
-      "text": "我的",
-      "iconPath": "images/burger.png",
-      "selectedIconPath": "images/burger_focus.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "浏览",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index_focus.png"
+      },
+      {
+        "pagePath": "pages/quiz/quiz",
+        "text": "提问",
+        "iconPath": "images/icon-quiz.png",
+        "selectedIconPath": "images/icon-quiz-act.png"
+      },
+      {
+        "pagePath": "pages/notify/notify",
+        "text": "回答",
+        "iconPath": "images/ring.png",
+        "selectedIconPath": "images/ring_focus.png"
+      },
+      {
+        "pagePath": "pages/more/more",
+        "text": "我的",
+        "iconPath": "images/burger.png",
+        "selectedIconPath": "images/burger_focus.png"
+      }
+    ]
   },
   "networkTimeout": {
     "request": 10000,
