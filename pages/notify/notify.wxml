@@ -6,10 +6,10 @@
  <block wx:for="{{answerByAttenUser}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" wx:key="{{item.index}}">
     <view class="notify-item flex-wrp">
       <view class="avatar flex-item">
-        <image src="{{}}"></image>
+        <image src="{{item.userV1.avatarUrl}}"></image>
       </view>
       <view class="notify-content flex-item">
-        <text class="notify-source">新的回答:</text>
+        <text class="notify-source">{{item.userV1.nickname}}的回答:</text>
         <text class="notify-title">{{item.content}}</text>
       </view>
     </view>
