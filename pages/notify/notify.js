@@ -16,9 +16,31 @@ Page({
       that.setData({
         userInfo: userInfo
       })
-      console.log(userInfo)
+      //console.log(userInfo)
     })
     this.getData();
+  },
+  getAttenUserInfo:function(){
+    var that = this
+    var userid = that.data.answerByAttenUser[0].userId
+    wx.request({
+      url: 'https://njuqa.clsaa.com/v1/user/',
+      method:'GET',
+      header: {
+        "Content-Type": "application/json"
+      }, 
+      data: {
+        id: userid
+      },
+      success:function(res){
+        console.log("attenuser")
+        console.log(res.data);
+        var text = res.data;
+        that.setData({
+          attenUser: text
+        });
+      }
+    })
   },
   getData: function () {
     var that = this;
@@ -41,6 +63,7 @@ Page({
         that.setData({
           answerByAttenUser: text
         });
+        //that.getAttenUserInfo()
       }
     })
   },
