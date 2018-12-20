@@ -45,6 +45,11 @@ Page({
           content: that.data.quesContent,
           userId: that.data.userinfo["id"]
       },
+      success: function () {
+        wx.navigateTo({
+          url: '../index/index'
+        })
+      }
     })
   },
 });

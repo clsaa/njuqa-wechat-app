@@ -6,7 +6,7 @@
           <input placeholder="搜索话题, 问题或人" placeholder-class="search-placeholder"/>
       </view>
       <view class="search-right flex-item" bindtap="upper">
-          <image src="../../images/lighting.png"></image>
+          <image src=""></image>
       </view>
   </view>
 
