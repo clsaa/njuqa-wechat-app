@@ -10,9 +10,12 @@
 .user .userinfo-avatar{
   flex: 1;
   display: inline-block;
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 80rpx;
+  width: 130rpx;
+  height: 130rpx;
+  overflow:hidden;  
+  border-radius: 50%;  
+  border: 2px solid #fff;  
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
 }
 .user .user-info{
   flex: 5;

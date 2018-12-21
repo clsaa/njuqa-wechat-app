@@ -4,7 +4,8 @@ var app = getApp()
 Page({
   data: {
     motto: 'Hello',
-    userInfo: {}
+    userInfo: {},
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //跳转到我的回答
   jumpmy_ans:function(options){
@@ -42,6 +43,41 @@ Page({
       that.setData({
         userInfo:userInfo
       })
+    })
+  },
+  bindGetUserInfo(e) {
+    console.log('bindGetUserInfo')
+    console.log(e.detail.userInfo)
+    console.log(app.globalData.userInfos)
+    wx.request({
+      url: 'https://njuqa.clsaa.com/v1/user/' + app.globalData.userInfos.id,
+      method: 'PUT',
+      data: {
+        avatarUrl: e.detail.userInfo.avatarUrl,
+        nickname: e.detail.userInfo.nickName,
+        openId: app.globalData.userInfos.openId
+      },
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (e) {
+        console.log(e)
+        console.log("update user question")
+        app.globalData.userInfos = e.data
+        if (e.data['identity'] == "ADMIN") {
+          app.globalData.isAdmin = true
+          console.log("right")
+        }
+        //this.refresh()
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        wx.switchTab({
+          url: '../index/index',
+        })
+      }
     })
   }
 })

@@ -1,11 +1,12 @@
 
 <view class="container more">
   <view class="user flex-wrp">
-    <view class="avatar flex-item">
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <view class="avatar flex-item userinfo-avator">
+      <open-data type="userAvatarUrl" class="userinfo-avatar"  background-size="cover"></open-data>
     </view>
     <view class="user-info flex-item">
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <open-data type="userNickName" class="userinfo-nickname" ></open-data>
       <text class="edit">查看或编辑个人主页</text>
     </view>
   </view>
@@ -43,6 +44,15 @@
       <button class="myitem-name flex-item" bindtap='jumpmy_index'>
         <text>身份验证</text>
       </button>
+    </view>
+
+
+    <view class="my-item flex-wrp">
+      <view class="myitem-icon flex-item" >
+        <image src="../../images/icon-my-act.png"></image>
+      </view>
+      <!--  新版本微信 需要使用 button 来授权登录 以增加安全性 -->
+      <button  class="myitem-name flex-item"  wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">在社区同步头像及昵称</button>
     </view>
   </view>
 </view>
