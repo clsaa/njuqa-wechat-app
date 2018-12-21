@@ -27,10 +27,16 @@
           
         </view>
     
-        <view class="que-operate flex-wrp">
+        <view class="que-operate flex-wrp" wx:if="{{questionItem.closeStatus=='0'}}">
             <view class="write flex-item" bindtap="bindAnswerItemTap">
                 <image src="../../images/write.png"></image>
                 <text>写回答</text>
+            </view>
+        </view>
+        <view class="que-operate flex-wrp" wx:if="{{questionItem.closeStatus=='1'}}">
+            <view class="write flex-item">
+                <image src="../../images/write.png"></image>
+                <text>问题已关闭</text>
             </view>
         </view>
     </view>
@@ -50,8 +56,13 @@
                         <text class="answer-txt">{{item.content}}</text>
                     </view>
                     <view class="answer-actions">
-                        <view class="comments dot" id = "{{idx}}" bindtap="CommentAnswer">
+                        <view class="comments dot" id = "{{idx}}" bindtap="CommentAnswer" wx:if="{{questionItem.closeStatus=='0'}}">
                             <a> 评论 </a>
+                        </view>
+                    </view>
+                    <view class="answer-actions">
+                        <view class="comments dot" id = "{{idx}}"  wx:if="{{questionItem.closeStatus=='1'}}">
+                            <a> 问题已关闭，不能评论 </a>
                         </view>
                     </view>
                 </view>
