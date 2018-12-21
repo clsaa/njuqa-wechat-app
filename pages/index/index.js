@@ -155,7 +155,7 @@ Page({
       success: function (res) {
         console.log(res)
         console.log("close question")
-        this.refresh()
+        //this.refresh()
       },
       fail: function () {
         // fail
