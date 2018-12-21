@@ -62,6 +62,7 @@ Page({
         that.setData({
           answers:text
         });
+        console.log(that.data.answers)
       }
     })
   },

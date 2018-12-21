@@ -58,8 +58,10 @@ Page({
           },
           success: function () {
             console.log("res")
-            wx.navigateTo({
-              url: '../index/index',
+            var pages = getCurrentPages()
+            var num = pages.length
+            wx.navigateBack({
+              delta: num
             })
           }
         })

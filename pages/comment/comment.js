@@ -84,6 +84,11 @@ Page({
                   
                   console.log("comment answer successful")
                   //console.log(userInfo);
+                  var pages = getCurrentPages()
+                  var num = pages.length
+                  wx.navigateBack({
+                    delta:num
+                  })
 
                 },
                 fail: function () {
