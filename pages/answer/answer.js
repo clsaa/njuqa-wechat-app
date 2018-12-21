@@ -9,6 +9,11 @@ Page({
     questionItem:{},
     answerContent:null
   },
+  onShow: function () {
+    this.setData({
+      answerContent: null
+    });
+  },
   handleTextareaInput: function (e) {
     var that = this
     this.setData({
@@ -29,20 +34,37 @@ Page({
     var that = this
     console.log(that.data.questionItem)
     //提交表单
-    wx.request({
-      url: 'https://njuqa.clsaa.com/v1/question/answer',
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {
-        "Content-Type": "application/json"
-      }, // 设置请求的 header 默认是application/json
-      data: {
-        content: that.data.answerContent,
-        questionId:that.data.questionItem["id"],
-        type:"SHOW",
-        userId: that.data.userInfo["id"]
+    wx.showModal({
+      title: '提示',
+      content: '是否提交您的问题',
+      cancelColor: "#666",
+      confirmColor: '#17b6ed',
+      duration: 2000,
+      success: function () {
+        //提交表单
+        var formData = {
+        }
+        wx.request({
+          url: 'https://njuqa.clsaa.com/v1/question/answer',
+          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+            "Content-Type": "application/json"
+          }, // 设置请求的 header 默认是application/json
+          data: {
+            content: that.data.answerContent,
+            questionId:that.data.questionItem["id"],
+            type:"SHOW",
+            userId: that.data.userInfo["id"]
+          },
+          success: function () {
+            console.log("res")
+            wx.navigateTo({
+              url: '../index/index',
+            })
+          }
+        })
       }
     })
-    console.log("submit success")
   },
   //事件处理函数
   toQuestion: function() {

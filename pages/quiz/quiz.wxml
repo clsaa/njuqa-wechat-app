@@ -4,7 +4,7 @@
 
 	<form bindsubmit="handleFormSubmit">
 		<view class="section">
-			<textarea bindinput="handleTextareaInput" auto-focus="true" maxlength="200" placeholder="please input here" />
+			<textarea bindinput="handleTextareaInput" auto-focus="true" maxlength="200" placeholder="please input here" value='{{quesContent}}'/>
 		</view>
 
 		<view class="section section_gap">

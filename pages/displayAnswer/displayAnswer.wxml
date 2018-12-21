@@ -12,12 +12,12 @@
             <view class="que-follow">
                 <view class="left">
                     <view class="watch">
-                        <image src="../../images/eye.png"></image>
-                        <text>3316</text>
+                        <image src=""></image>
+                        <text></text>
                     </view>
                     <view class="comment">
-                        <image src="../../images/comment2.png"></image>
-                        <text>27</text>
+                        <image src=""></image>
+                        <text></text>
                     </view>
                 </view>
                 <view class="right" bindtap="AttentionFunction">
@@ -39,9 +39,9 @@
             <view class="feed-source">
                 <a class="" bindTap="">
                     <view class="avatar">
-                        <image src="{{userinfo.avatarUrl}}"></image>
+                        <image src="../../images/icon1.jpeg"></image>
                     </view>
-                    <text>{{userinfo.nickname}}</text>
+                    <text>Robert</text>
                 </a>
             </view>
             <view class="feed-content">

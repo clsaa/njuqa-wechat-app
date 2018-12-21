@@ -155,7 +155,7 @@ Page({
       success: function (res) {
         console.log(res)
         console.log("close question")
-        
+        this.refresh()
       },
       fail: function () {
         // fail
@@ -181,9 +181,7 @@ Page({
       },
       success: function (res) {
         console.log(res)
-        
         console.log("delete question")
-       
       },
       fail: function () {
         // fail
@@ -192,7 +190,7 @@ Page({
         // complete
       }
     })
-
+    this.refresh()
   },
   // 用于测试获取用户Userinfo，因为请求是异步的，
   // 所以很多时候可能请求不到数据。

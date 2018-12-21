@@ -17,7 +17,20 @@ Page({
     })
     console.log(that.data.userinfo)
   },
+  onShow:function(){
+    this.setData({
+      quesContent: null
+    });
+  },
   handleTextareaInput: function (e) {
+    if(e == null){
+      wx.showToast({
+        title: '请填写内容',
+        icon: 'success',
+        duration: 2000
+      })
+      return
+    }
     this.setData({
       restNum: 200 - e.detail.value.length,
       quesContent:e.detail.value
@@ -35,19 +48,33 @@ Page({
       })
       return
     }
-    wx.request({
-      url: 'https://njuqa.clsaa.com/v1/question',
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {
-          "Content-Type": "application/json"
-      }, // 设置请求的 header 默认是application/json
-      data: {
-          content: that.data.quesContent,
-          userId: that.data.userinfo["id"]
-      },
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '是否提交您的问题',
+      cancelColor: "#666",
+      confirmColor: '#17b6ed',
+      duration: 2000,
       success: function () {
-        wx.navigateTo({
-          url: '../index/index'
+        //提交表单
+        var formData = {
+        }
+        wx.request({
+          url: 'https://njuqa.clsaa.com/v1/question',
+          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+              "Content-Type": "application/json"
+          }, // 设置请求的 header 默认是application/json
+          data: {
+              content: that.data.quesContent,
+              userId: that.data.userinfo["id"]
+          },
+          success: function () {
+            console.log("res")
+            wx.switchTab({
+              url: '../index/index',
+            })
+          }
         })
       }
     })

@@ -83,7 +83,11 @@ Page({
         //var userInfo = [];
         console.log("user attension successful")
         //console.log(userInfo);
-
+        wx.showToast({
+          title: '关注成功',
+          icon: 'success',
+          duration: 2000
+        })
       }
     })
   },
