@@ -11,6 +11,7 @@ Page({
     openid:0,
     nickName: "",
     isAdmin:false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   textData: 'before',
   //事件处理函数

@@ -39,6 +39,7 @@ App({
               code: res.code
             },
             success(e) {
+              console.log("login....")
               console.log(e.data)
               console.log(e.data['identity'])
               that.globalData.userInfos = e.data
@@ -46,7 +47,8 @@ App({
                 that.globalData.isAdmin = true
                 console.log("right")
               }
-              if(e.data['nickname'] == null){
+              console.log(that.globalData.userInfos)
+              if(e.data['id'] == null){
                 wx.request({
                   url: 'https://njuqa.clsaa.com/v1/user',
                   method: "POST",
@@ -57,13 +59,20 @@ App({
                     avatarUrl: that.globalData.avatarUrl,
                     nickname: that.globalData.nickname,
                     openId:e.data['openId']
+                  },
+                  success:function(e){
+                    console.log("after register")
+                    console.log(e.data)
+                    console.log(e.data['identity'])
+                    that.globalData.userInfos = e.data
+                    if (e.data['identity'] == "ADMIN") {
+                      that.globalData.isAdmin = true
+                      console.log("right")
+                    }
                   }
                 })
-                //console.log(that.globalData.avatarUrl)
-                //console.log(that.globalData.nickname)
               }
-              
-              
+
             }
           })
         } else {
@@ -72,6 +81,7 @@ App({
       }
       })
   },
+  
   getUserInfo:function(cb){
     //var that = this
     typeof cb == "function" && cb(this.globalData.userInfos)

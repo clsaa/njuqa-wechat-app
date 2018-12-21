@@ -1,6 +1,6 @@
+
 <!--index.wxml-->
 <scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-
     <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" wx:key="{{item.index}}">
         <view class="feed-item" wx:if="{{item.deleteStatus=='0'}}">
             <view class="feed-content" >
