@@ -143,7 +143,7 @@ Page({
   CloseQuestion: function (e) {
         // console.log(e.currentTarget.id)
     var idx = e.currentTarget.id
-   
+    var that = this
     var item = this.data.feed[idx]
     
     wx.request({
@@ -165,12 +165,15 @@ Page({
       }
     })
     
+    that.getData()
+    
   },
   // 删除问题
   DeleteQuestion: function (e) {
     // console.log(e.currentTarget.id)
     var idx = e.currentTarget.id
     var item = this.data.feed[idx]
+    var that = this
     console.log(item)
 
     wx.request({
@@ -191,6 +194,8 @@ Page({
       }
     })
     this.refresh()
+    console.log("getData in deleteQuestion")
+    that.getData()
   },
   // 用于测试获取用户Userinfo，因为请求是异步的，
   // 所以很多时候可能请求不到数据。
