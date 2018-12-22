@@ -15,14 +15,7 @@
                     <view bindtap="bindItemTap" id="{{idx}}">
                         <text class="answer-txt">查看答案</text>
                     </view>
-                    <view class="answer-actions">
-                        <view class="comments dot" bindtap="CommentQuestion" id="{{idx}}">
-                            <a>{{item.comment_num}} 评论 </a>
-                        </view>
-                        <view class="follow-it" bindtap="AttentionQuestion" uid="{{item.userId}}" id="{{item.id}}">
-                            <a>关注问题</a>
-                        </view>
-                    </view>
+                   
                 </view>
             </view>
         </view>

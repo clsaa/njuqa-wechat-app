@@ -12,16 +12,19 @@
                     </a>
                 </view>
                 <view class="answer-body">
-                    <view bindtap="bindItemTap" id="{{idx}}">
+                    <view bindtap="bindItemTap" id="{{idx}}" >
                         <text class="answer-txt">查看答案</text>
                     </view>
+                    <!-- <view bindtap="bindItemTap" id="{{idx}}" wx:if="{{item.closeStatus=='1'}}">
+                        <text class="answer-txt">问题已关闭</text>
+                    </view>                    -->
                     <view class="answer-actions">
-                        <view class="comments dot" bindtap="CommentQuestion" id="{{idx}}">
-                            <a>{{item.comment_num}} 评论 </a>
+                        <view class="comments dot" bindtap="CloseQuestion" id="{{idx}}" wx:if="{{item.closeStatus=='0'}}">
+                            <a> 关闭问题 </a>
                         </view>
-                        <view class="follow-it" bindtap="CloseQuestion" id="{{idx}}">
-                            <a>关闭问题</a>
-                        </view>
+                    <view  id="{{idx}}" wx:if="{{item.closeStatus=='1'}}">
+                        <text class="answer-txt">问题已关闭</text>
+                    </view>                        
                     </view>
                 </view>
             </view>

@@ -27,13 +27,13 @@ Page({
   },
 
 // 向添加评论页面传数据
-  // bindAnswerItemTap: function () {
-  //   var that = this
-  //   wx.navigateTo({
-  //     url: '../answer/answer?item='+
-  //       JSON.stringify(that.data.questionItem)
-  //   })
-  // },
+  bindAnswerItemTap: function () {
+    var that = this
+    wx.navigateTo({
+      url: '../answer/answer?item='+
+        JSON.stringify(that.data.questionItem)
+    })
+  },
   // 新增options参数，options存储的是Index.js中
   // 传入的问题内容，使用item存储
   onLoad: function (options) {

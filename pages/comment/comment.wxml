@@ -32,39 +32,3 @@
   </view>
 </view>
 
-=======
-<!--answer.wxml-->
-<view class="container">
-    <view class="question" bindtap="toQuestion">
-        <text class="question-title">{{answerItem.content}}</text>
-    </view>
-    <view class="answerer-wrp">
-        <view class="bg-half"></view>
-        <view class="answerer flex-wrp">
-            <view class="avatar flex-item">
-                <image src="{{userInfo.avatarUrl}}"></image>
-            </view>
-            <view class="answerer-info flex-item">
-                <text class="answerer-name">{{userInfo.nickname}}</text>
-                <text class="answerer-des"></text>
-            </view>
-  
-        </view>
-    </view>
-    <view class="question">
-    <view >请在此输入您的评论：</view>
-    <form bindsubmit="handleFormSubmit">
-		<view >
-			<textarea bindinput="handleTextareaInput" auto-focus="true" maxlength="200" placeholder="please input here" />
-		</view>
-
-
-		<view class="btn-area">
-			<button type="default" formType="submit">提交</button>
-		</view>
-
-	</form>
-  </view>
-</view>
-
->>>>>>> renle
