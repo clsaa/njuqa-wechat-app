@@ -12,7 +12,8 @@
     "pages/quiz/quiz",
     "pages/comment/comment",
     "pages/my_question/my_question",
-    "pages/my_attention/my_attention"
+    "pages/my_attention/my_attention",
+    "pages/displaycomment/displaycomment"
   ],
   "window": {
     "backgroundTextStyle": "light",
