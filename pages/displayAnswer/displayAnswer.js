@@ -7,7 +7,8 @@ Page({
     motto: '社区问答',
     userinfo: {},
     questionItem: [],
-    answers:[]
+    answers:[],
+    isattenUser:false
   },
   //事件处理函数
   bindAnswerItemTap: function () {
@@ -39,9 +40,34 @@ Page({
     })
     console.log(that.data.userinfo)
     that.getAnswers()
+    that.isAttenUser()
   },
   tapName: function (event) {
     console.log(event)
+  },
+  //查看是否已关注用户
+  isAttenUser:function(){
+    var that = this
+    var url1 = "https://njuqa.clsaa.com/v1/user/attention/source/"
+    var url2 = that.data.userinfo.id
+    var url3 = "/target/"
+    var url4 = that.data.questionItem.userId
+    wx.request({
+      url: url1+url2+url3+url4,
+      method: 'GET',
+      header: {
+        "Content-Type": "application/json"
+      },
+      success: function (res) {
+        console.log("是否关注")
+        console.log(res.data)
+        if(res.data.id==null){
+          that.setData({
+            isattenUser:true
+          })
+        }
+      }
+    })
   },
   // 获取当前问题的所有答案，用于前端页面显示
   getAnswers: function(){
@@ -83,6 +109,9 @@ Page({
         // 操作json数据
         //var userInfo = [];
         console.log("user attension successful")
+        that.setData({
+          isattenUser:false
+        });
         //console.log(userInfo);
         wx.showToast({
           title: '关注成功',

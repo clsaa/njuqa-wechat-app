@@ -20,7 +20,7 @@
                         <text></text>
                     </view>
                 </view>
-                <view class="right" bindtap="AttentionFunction">
+                <view class="right" bindtap="AttentionFunction" wx:if="{{isattenUser==true}}">
                     关注用户
                 </view>
             </view>
