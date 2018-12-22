@@ -11,8 +11,11 @@
                     </a>
                 </view>
                 <view class="answer-body">
-                    <view bindtap="bindItemTap" id="{{idx}}">
+                    <view bindtap="bindItemTap" id="{{idx}}" wx:if="{{item.closeStatus=='0'}}">
                         <text class="answer-txt">查看答案</text>
+                    </view>
+                    <view bindtap="bindItemTap" id="{{idx}}" wx:if="{{item.closeStatus=='1'}}">
+                        <text class="answer-txt">问题已关闭</text>
                     </view>
                     <view class="answer-actions">
                         <view class="comments dot" bindtap="CloseQuestion" id="{{idx}}" wx:if="{{isAdmin==true}}">
