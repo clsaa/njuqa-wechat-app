@@ -1,0 +1,24 @@
+<!--question.wxml-->
+<view class="container">
+    <view class="answer-feed" wx:for="{{answers}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" wx:key="{{item.index}}">
+        <view  bindtap="" class="feed-item">
+            <view class="feed-source">
+                <a class="" bindTap="">
+                    <view class="avatar">
+                        <image src="{{item.userV1.avatarUrl}}"></image>
+                    </view>
+                    <text>{{item.userV1.nickname}}</text>
+                </a>
+            </view>
+            <view class="feed-content">
+                <view class="answer-body">
+                    <view>
+                        <text class="answer-txt">{{item.content}}</text>
+                    </view>      
+                </view>
+            </view>     
+
+        </view>
+    </view>
+</view>
+

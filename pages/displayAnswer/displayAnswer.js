@@ -10,18 +10,34 @@ Page({
     answers:[],
     isattenUser:false
   },
-  //事件处理函数
-  bindAnswerItemTap: function () {
-    var that = this
+  //事件处理函数，向查看评论页面传数据
+  bindItemTap: function (e) {
+    // 参数e用于获取index.wxml中查看答案对应的选项的下标
+    var idx = e.currentTarget.id
+    // 使用feed[idx]获取问题的属性
+    console.log(this.data.feed[idx])
+    var item = this.data.feed[idx]
+    console.log('answerid')
+    console.log(item)
+    // 传递问题属性
     wx.navigateTo({
-      url: '../answer/answer?item='+
-        JSON.stringify(that.data.questionItem)
+      url: '../displaycomment/displaycomment?item=' +
+        JSON.stringify(item)
     })
   },
+
+// 向添加评论页面传数据
+  // bindAnswerItemTap: function () {
+  //   var that = this
+  //   wx.navigateTo({
+  //     url: '../answer/answer?item='+
+  //       JSON.stringify(that.data.questionItem)
+  //   })
+  // },
   // 新增options参数，options存储的是Index.js中
   // 传入的问题内容，使用item存储
   onLoad: function (options) {
-    console.log('onLoad')
+    console.log('onLoad222')
     var that = this
     // options用于存储上一个页面传入的数据
     //that.data.questionItem = JSON.parse(options.item)
@@ -119,6 +135,18 @@ Page({
           duration: 2000
         })
       }
+    })
+  },
+  jumptocomment: function (e){
+    // console.log(e.currentTarget.id)
+    var idx = e.currentTarget.id
+    console.log(idx)
+    console.log(this.data.answers[idx])
+    console.log("comment comment")
+    var item = this.data.answers[idx]
+    wx.navigateTo({
+      url: "../displaycomment/displaycomment?item=" +
+        JSON.stringify(item),
     })
   },
   // 只是为了测试获取相应的问题id而设置的测试函数，后期可移除

@@ -28,7 +28,7 @@ Page({
     var that = this
     wx.showModal({
       title: '提示',
-      content: '是否提交您的问题',
+      content: '是否提交您的评论',
       cancelColor: "#666",
       confirmColor: '#17b6ed',
       duration: 2000,
