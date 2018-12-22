@@ -1,58 +1,42 @@
 
-<view class="container more">
-  <view class="user flex-wrp">
+<view class="member-container">
+
+    <view class="user flex-wrp">
     <view class="avatar flex-item userinfo-avator">
       <open-data type="userAvatarUrl" class="userinfo-avatar"  background-size="cover"></open-data>
     </view>
     <view class="user-info flex-item">
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       <open-data type="userNickName" class="userinfo-nickname" ></open-data>
-      <text class="edit">查看或编辑个人主页</text>
-    </view>
+      </view>
+
   </view>
 
-  <view class="my">
-    <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
-        <image src="../../images/eye.png"></image>
-      </view>
-      <button class="myitem-name flex-item" bindtap='jumpmy_att'>
-        <text>关注的问题</text>
-      </button>
-    </view>
-    <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
-        <image src="../../images/draft.png"></image>
-      </view>
-      <button class="myitem-name flex-item" bindtap='jumpmy_que'>
-        <text>我的提问</text>
-      </button>
-    </view>
-    <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
-        <image src="../../images/zhi.png"></image>
-      </view>
-      <button class="myitem-name flex-item" bindtap='jumpmy_ans'>
-        <text>我的回答</text>
-      </button>
+
+  <!--用户信息  -->
+  <view class="user-info">
+    <view class="info-item">
+      <image class="icon-info" src="../../images/heart.png"></image>
+      <button class="free-btn-bordernone" bindtap='jumpmy_att'>关注的问题</button>
       
     </view>
-    <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
-        <image src="../../images/icon-my-act.png"></image>
-      </view>
-      <button class="myitem-name flex-item" bindtap='jumpmy_index'>
-        <text>身份验证</text>
-      </button>
-    </view>
-
-
-    <view class="my-item flex-wrp">
-      <view class="myitem-icon flex-item" >
-        <image src="../../images/icon-my-act.png"></image>
-      </view>
-      <!--  新版本微信 需要使用 button 来授权登录 以增加安全性 -->
-      <button  class="myitem-name flex-item"  wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">在社区同步头像及昵称</button>
+    <view class="info-item">
+      <image class="icon-info" src="../../images/column.png"></image>
+      <button class="free-btn-bordernone" bindtap='jumpmy_que'>我的提问</button>
     </view>
   </view>
+  <view class="user-info">
+    <view class="info-item">
+      <image class="icon-info" src="../../images/write.png"></image>
+      <button class="free-btn-bordernone" bindtap='jumpmy_ans'>我的回答</button>
+    </view>
+    <view class="info-item">
+      <image class="icon-info" src="../../images/address.png"></image>
+      <button class="free-btn-bordernone" bindtap='jumpmy_index'>身份验证</button>
+    </view>
+  </view>
+ 
+
+  
 </view>
+
