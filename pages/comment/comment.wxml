@@ -13,9 +13,6 @@
                 <text class="answerer-name">{{userInfo.nickname}}</text>
                 <text class="answerer-des"></text>
             </view>
-            <view class="follow flex-item" >
-                <text>十 关注</text>
-            </view>
         </view>
     </view>
     <view class="question">

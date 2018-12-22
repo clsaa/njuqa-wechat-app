@@ -50,6 +50,8 @@
     height: 50rpx;
     margin: 0 10rpx 0 0;
     vertical-align: middle;
+    display: inline-block;
+    border-radius: 45rpx;
 }
 .question-item .que-follow .left{
     float: left;

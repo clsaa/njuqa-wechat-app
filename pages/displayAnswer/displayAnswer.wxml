@@ -6,18 +6,12 @@
                 <!--显示对应的问题内容, questionItem.content-->
                 {{questionItem.content}}
             </view>
-            <view class="que-content">
-                <!--显示对应的用户名, userinfo.nickname-->
-            </view>
-            <view class="que-follow">
+           
+           <view class="que-follow">
                 <view class="left">
-                    <view class="watch">
-                        <image src=""></image>
-                        <text></text>
-                    </view>
-                    <view class="comment">
-                        <image src=""></image>
-                        <text></text>
+                    <view class="avatar">
+                        <image src="{{questionItem.userV1.avatarUrl}}"></image>
+                        <text>{{questionItem.userV1.nickname}}</text>
                     </view>
                 </view>
                 <view class="right" bindtap="AttentionFunction" wx:if="{{isattenUser==true}}">
