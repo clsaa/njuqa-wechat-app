@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!--answer.wxml-->
 <view class="container">
     <view class="question" bindtap="toQuestion">
